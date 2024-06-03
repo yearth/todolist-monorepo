@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinTable, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity() // sql table name will be "todo"
 export class Todo {
@@ -23,4 +23,9 @@ export class Todo {
     onUpdate: 'CURRENT_TIMESTAMP',
   })
   updatedAt: Date;
+
+  @JoinTable()
+  // TODO: why is reporting an error here?
+  // @ManyToMany(() => Category, (category) => category.todos)
+  categories: string[];
 }

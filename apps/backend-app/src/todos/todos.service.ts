@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 import { CreateOneDto } from './dto/create-one.dto/create-one.dto';
 import { UpdateOneDto } from './dto/update-one.dto/update-one.dto';
-import { Todo } from './entities/todos.entites';
+import { Todo } from './entities/todos.entity';
 
 @Injectable()
 export class TodosService {
