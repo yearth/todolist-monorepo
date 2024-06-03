@@ -6,7 +6,9 @@ import {
   Param,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
+import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
 import { CreateOneDto } from './dto/create-one.dto/create-one.dto';
 import { UpdateOneDto } from './dto/update-one.dto/update-one.dto';
 import { TodosService } from './todos.service';
@@ -16,8 +18,8 @@ export class TodosController {
   constructor(private readonly todosService: TodosService) {}
 
   @Get('/getAll')
-  async getAll() {
-    return await this.todosService.getAll();
+  async getAll(@Query() paginationQueryDto: PaginationQueryDto) {
+    return await this.todosService.getAll(paginationQueryDto);
   }
 
   @Get('/getOne/:id')

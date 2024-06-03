@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 import { CreateOneDto } from './dto/create-one.dto/create-one.dto';
 import { UpdateOneDto } from './dto/update-one.dto/update-one.dto';
 import { Todo } from './entities/todos.entites';
@@ -11,8 +12,11 @@ export class TodosService {
     @InjectRepository(Todo) private readonly todoRepository: Repository<Todo>,
   ) {}
 
-  getAll() {
-    return this.todoRepository.find();
+  getAll(paginationQueryDto: PaginationQueryDto) {
+    return this.todoRepository.find({
+      skip: paginationQueryDto.offset,
+      take: paginationQueryDto.limit,
+    });
   }
 
   async getOne(id: number) {
