@@ -10,7 +10,7 @@ import { TodosModule } from './todos/todos.module';
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: process.env.HOST,
       port: 5432,
       username: 'root',
       password: 'admin888',
