@@ -9,4 +9,7 @@ export class CreateOneDto {
 
   @IsBoolean()
   readonly isDone: boolean;
+
+  @IsString({ each: true })
+  readonly categories: string[];
 }

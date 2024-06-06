@@ -1,4 +1,11 @@
-import { Column, Entity, JoinTable, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Category } from './category.entity';
 
 @Entity() // sql table name will be "todo"
 export class Todo {
@@ -26,6 +33,8 @@ export class Todo {
 
   @JoinTable()
   // TODO: why is reporting an error here?
-  // @ManyToMany(() => Category, (category) => category.todos)
-  categories: string[];
+  @ManyToMany(() => Category, (category) => category.todos, {
+    cascade: true, // ["insert"]
+  })
+  categories: Category[];
 }

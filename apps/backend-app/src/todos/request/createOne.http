@@ -5,5 +5,9 @@ Content-Type: application/json
 {
   "title": "3312412412412343",
   "description": "2244422",
-  "isDone": false
+  "isDone": false,
+  "categories": [
+    "adventure",
+    "combat"
+  ]
 }
